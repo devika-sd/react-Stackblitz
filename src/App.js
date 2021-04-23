@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import "./style.css";
+import { BrowserRouter, Link, Route } from "react-router-dom";
+const SideBar = () => {
+  return (
+    <>
+      <h1>Home Component</h1>
+    </>
+  );
+};
 
 const Home = () => {
-  return <h1>home</h1>;
+  return (
+    <>
+      <h1>Home Component</h1>
+    </>
+  );
 };
 const Contact = () => {
   return <h1>Contact</h1>;
@@ -12,13 +24,20 @@ const About = () => {
 };
 
 export default function App() {
+  const [currentload, setcurrentloadt] = useState(0);
+  var elemt = <About />;
   return (
     <div>
-      <h1>Hello StackBlitz!</h1>
-      <p>Start editing to see some magic happen :)</p>
-      <Home />
-      <Contact />
-      <About />
+      <div>{currentload}</div>
+      <BrowserRouter>
+        <Route path="/">
+          <Home />
+        </Route>
+        <Route path="/">
+          <Contact />
+        </Route>
+        <Route path="/home">{elemt}</Route>
+      </BrowserRouter>
     </div>
   );
 }
